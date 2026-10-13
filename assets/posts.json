@@ -1,0 +1,66 @@
+[
+  {
+    "id": "first-kolam",
+    "title": "Your first kolam starts with a little patience",
+    "category": "Tutorials",
+    "image": "craft",
+    "time": 5,
+    "desc": "A gentle, practical introduction to making your first stencil kolam, from surface preparation to the final lift."
+  },
+  {
+    "id": "pongal",
+    "title": "A doorway ready to welcome Pongal",
+    "category": "Festivals",
+    "image": "entrance",
+    "time": 6,
+    "desc": "Bring together thoughtful kolam patterns and a welcoming entrance for the harvest celebration."
+  },
+  {
+    "id": "small-spaces",
+    "title": "Beautiful patterns for small entrances",
+    "category": "Inspiration",
+    "image": "hero",
+    "time": 4,
+    "desc": "Choose scale, placement and a simple border to bring a compact threshold to life."
+  },
+  {
+    "id": "stencil-care",
+    "title": "A little care for a stencil you love",
+    "category": "Tutorials",
+    "image": "stencil",
+    "time": 4,
+    "desc": "Keep reusable wooden and MDF stencils clean, dry and ready for the next pattern."
+  },
+  {
+    "id": "padi-story",
+    "title": "The quiet beauty of padi kolam",
+    "category": "Culture",
+    "image": "product-2",
+    "time": 6,
+    "desc": "Explore the rhythm of layered lines and the care behind a traditional kolam composition."
+  },
+  {
+    "id": "diwali",
+    "title": "Let your Diwali entrance glow",
+    "category": "Festivals",
+    "image": "festival",
+    "time": 5,
+    "desc": "Balance a colourful rangoli with warm lamps, flowers and enough space to welcome visitors."
+  },
+  {
+    "id": "right-size",
+    "title": "Finding the right stencil size",
+    "category": "Tutorials",
+    "image": "product-4",
+    "time": 4,
+    "desc": "Measure your space and compare inches with centimetres before choosing a design."
+  },
+  {
+    "id": "personal-design",
+    "title": "A pattern with a personal meaning",
+    "category": "Inspiration",
+    "image": "flowers",
+    "time": 5,
+    "desc": "Turn a name, celebration or favourite motif into a thoughtful custom stencil enquiry."
+  }
+]

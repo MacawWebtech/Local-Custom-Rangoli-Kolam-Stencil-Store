@@ -9,6 +9,9 @@
 @media(max-width:639px){.announcement{padding:7px 15px;font-size:10px}.nav-wrap{padding:14px 18px;gap:10px;min-height:78px}.brand-name{font-size:23px}.brand svg{width:36px;height:36px}.brand small{font-size:7px;letter-spacing:2px}.nav-actions{gap:0}.icon-button{width:40px}.hero{padding:35px 18px 30px;grid-template-columns:1fr;gap:30px}.hero h1{font-size:50px;letter-spacing:-1.5px}.hero-copy{max-width:100%}.hero-copy>p{font-size:16px;max-width:100%;margin-top:18px}.hero-actions{margin-top:24px}.hero-mini{margin-top:25px}.hero-media{padding-bottom:15px}.hero-media>img{height:430px;border-radius:140px 6px 6px 6px}.hero-note{inset-inline-start:12px;bottom:0;padding:15px 18px}.hero-note .motif{display:block}.hero-note strong{font-size:18px}.trust-strip{padding:18px;gap:15px;font-size:8px;letter-spacing:.7px}.trust-strip b{font-size:17px}.trust-strip span{gap:7px}.section{padding:48px 18px}.section-heading{margin-bottom:26px}.section-heading-row{display:block;margin-bottom:25px}.section-heading-row>a{margin-top:14px}.grid-3,.grid-4{grid-template-columns:1fr;gap:26px}.grid-3>.benefit:last-child,.grid-3>.testimonial:last-child,.grid-3>.pricing-card:last-child,.steps>.step:last-child{grid-column:auto}.collection-card .image-wrap{aspect-ratio:1.4}.collection-card h3{font-size:25px}.product-image{aspect-ratio:1.25}.product-body{padding:22px}.product-body h3{font-size:25px}.product-bottom{flex-wrap:nowrap}.split .image-wrap{height:360px}.split-copy{padding-top:4px}.festival-copy{padding:30px 24px}.festival-banner img{height:330px}.gallery{gap:15px}.gallery img{height:230px}.gallery img:last-child{height:290px}.footer-grid{gap:30px 20px}.footer-grid>div:first-child,.footer-grid>div:last-child{grid-column:1/-1}.site-footer{padding:42px 18px 0}.footer-bottom{flex-direction:column;gap:8px}.cta-section{padding:47px 18px}.page-hero{padding:42px 18px}.page-hero p{font-size:14px}.editorial-hero{padding:25px 18px 40px}.editorial-top h1{font-size:45px}.editorial-image img{height:460px}.editorial-caption{position:relative;inset:auto;margin:-50px 18px 0;padding:22px;border:1px solid var(--border)}.wide-story img{height:340px}.filters{grid-template-columns:1fr 1fr;gap:15px}.toolbar{flex-wrap:wrap}.toolbar .search-input{max-width:none;flex:1;min-width:190px}.toolbar .sort-select{max-width:none;flex:1}.filter-layout .grid-3{grid-template-columns:1fr}.detail-copy h1{font-size:36px}.form-grid{grid-template-columns:1fr}.form-panel{padding:23px}.form-grid .full{grid-column:auto}.auth-form{padding:45px 18px}.error-number{font-size:115px}.center-page{padding:50px 18px}.center-page h1{font-size:38px}.coming-image{width:230px;height:230px}.article-nav{flex-direction:column}.pricing-table{min-width:560px}.hero-mini{font-size:10px}.main-nav{padding-inline:18px}[dir=rtl] .hero-media>img{border-radius:6px 140px 6px 6px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.js-motion .reveal:not(.revealed){opacity:1;transform:none}}
 
+/* Keep native form controls on the same brand accent as the rest of the site. */
+input[type="checkbox"],input[type="radio"]{accent-color:var(--primary)}
+
 /* Requested strict three-colour UI. Photos keep their original colours. */
 :root{--primary:#a54e32;--primary-light:#a54e32;--bg:#ffffff;--surface:#ffffff;--sand:#ffffff;--text:#000000;--muted:#000000;--border:#a54e32;--footer:#000000}
 [data-theme=dark]{--primary:#a54e32;--primary-light:#a54e32;--bg:#000000;--surface:#000000;--sand:#000000;--text:#ffffff;--muted:#ffffff;--border:#a54e32;--footer:#000000}
@@ -228,10 +231,7 @@ main img:hover,main a:focus-visible img,main button:focus-visible img{transform:
 .cta-section{border-top:4px double #ffffff}
 .trust-strip{border-top-width:3px;border-bottom-width:1px}
 
-/* Section index markers (absolutely positioned: no effect on content flow) */
-main{counter-reset:sec}
-main>.section{counter-increment:sec;position:relative}
-main>.section::before{content:"\2116  " counter(sec,decimal-leading-zero);position:absolute;top:26px;inset-inline-end:30px;font-size:10px;font-weight:600;letter-spacing:2.4px;color:var(--primary)}
+/* Section index markers removed across all pages. */
 
 @media(min-width:1200px){
   html{scroll-padding-top:30px}
@@ -307,4 +307,309 @@ main>.section::before{content:"\2116  " counter(sec,decimal-leading-zero);positi
   .site-header .nav-drop{position:relative;}
   .site-header .dropdown{position:absolute;inset-inline-start:100%;inset-block-start:0;width:220px;margin:0;padding:10px;background:var(--bg);border:1px solid var(--primary);}
   .site-header .nav-drop:last-child .dropdown{inset-block-start:auto;inset-block-end:0;}
+}
+
+
+/* Desktop header: restore the full-width top navigation instead of the side rail. */
+@media (min-width:1200px){
+  body{display:block}
+  body>*:not(.site-header){grid-column:auto;min-width:0}
+  .site-header{
+    position:sticky;top:0;width:100%;height:auto;max-height:none;
+    overflow:visible;border-bottom:1px solid var(--border);
+    border-inline-end:0;z-index:40
+  }
+  .nav-wrap{
+    flex-direction:row;align-items:center;justify-content:space-between;
+    gap:26px;padding:19px 30px;min-height:88px
+  }
+  .brand{flex-direction:row;align-items:center;gap:10px}
+  .brand svg{width:43px;height:43px;flex:0 0 43px}
+  .brand-name{font-size:25px}
+  .brand small{font-size:8px}
+  .main-nav{
+    flex:1 1 auto;flex-direction:row;align-items:center;justify-content:center;
+    gap:clamp(12px,1.5vw,23px);font-size:13px;counter-reset:none
+  }
+  .main-nav>a,.nav-drop>summary{
+    display:block;align-items:initial;gap:0;padding:12px 0;
+    border-bottom:0
+  }
+  .main-nav>a::before,.nav-drop>summary::before{content:none}
+  .main-nav>a::after,.nav-drop>summary::after{bottom:4px;height:1px}
+  .nav-drop{position:relative}
+  .dropdown{
+    position:absolute;top:100%;width:220px;border:1px solid var(--border);
+    border-radius:var(--radius);padding:10px;margin:0;box-shadow:0 8px 24px #00000012;
+    background:var(--surface)
+  }
+  [dir=rtl] .dropdown{padding:10px;margin:0}
+  .main-nav .dropdown a{min-height:40px;font-size:13px}
+  .nav-actions{flex-wrap:nowrap;gap:8px;margin-top:0;align-items:center}
+  .nav-actions>.icon-button{
+    flex:0 0 44px;width:44px;min-width:44px;height:44px;
+    border:0;border-radius:0;color:var(--text);background:transparent
+  }
+  .nav-actions>.icon-button:hover,.nav-actions>.icon-button:focus-visible,
+  .nav-actions>.icon-button[aria-pressed=true]{background:transparent;color:var(--primary)}
+  .nav-actions>.rtl-button{font-size:11px;font-weight:400;letter-spacing:1px}
+  .nav-actions>.btn{flex:0 0 auto;order:initial;margin-top:0}
+  .nav-wrap::after{display:none}
+}
+
+
+/* Dropdown repair: keep the open menu above neighbouring navigation links. */
+@media (min-width:1200px){
+  .site-header .main-nav .nav-drop{z-index:1;}
+  .site-header .main-nav .nav-drop[open]{z-index:20;}
+  .site-header .main-nav .nav-drop[open] .dropdown{
+    z-index:21;
+    top:calc(100% + 8px);
+    inset-inline-start:0;
+    background:var(--surface);
+    opacity:1;
+  }
+  .site-header .main-nav .nav-drop>summary{white-space:nowrap;}
+  .site-header .main-nav .dropdown a{
+    display:flex;
+    align-items:center;
+    width:100%;
+    white-space:nowrap;
+    line-height:1.35;
+  }
+}
+
+/* Consistent corner radius for content containers across every page. */
+.benefit,
+.step,
+.testimonial,
+.pricing-card,
+.product-card,
+.product-body,
+.article-card,
+.article-sidebar,
+.contact-item,
+.auth-quote,
+.form-panel,
+.map-placeholder,
+.empty-state,
+.festival-banner,
+.contact-map-frame,
+.hero-note,
+.editorial-caption,
+.editorial-image img,
+.collection-card .image-wrap,
+.collection-card .card-bottom,
+.split .image-wrap,
+.toast{
+  border-radius:var(--radius)!important;
+}
+
+/* More navigation dropdown: keep the complete list inside one visible panel. */
+.site-header{isolation:isolate}
+.site-header .main-nav{position:relative}
+.site-header .main-nav .nav-drop{position:relative;z-index:1}
+.site-header .main-nav .nav-drop[open]{z-index:100}
+.site-header .main-nav .nav-drop[open]>.dropdown{
+  display:block!important;
+  box-sizing:border-box;
+  height:auto!important;
+  min-height:0!important;
+  max-height:min(70vh,440px);
+  overflow-x:hidden;
+  overflow-y:auto;
+  background:var(--surface)!important;
+  border:1px solid var(--primary)!important;
+  border-radius:var(--radius)!important;
+  padding:10px!important;
+  margin:8px 0 0!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.16);
+}
+.site-header .main-nav .dropdown>a{
+  position:relative!important;
+  display:flex!important;
+  align-items:center;
+  width:100%;
+  min-height:40px;
+  padding:9px 12px!important;
+  line-height:1.4;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+@media(min-width:1024px){
+  .site-header,.site-header .main-nav{overflow:visible}
+  .site-header .main-nav .nav-drop[open]>.dropdown{
+    position:absolute!important;
+    inset-block-start:calc(100% + 8px)!important;
+    inset-inline-start:0!important;
+    inset-block-end:auto!important;
+    width:240px!important;
+    max-height:min(70vh,440px);
+    margin:0!important;
+  }
+}
+@media(max-width:1023px){
+  .site-header .main-nav.open{z-index:100}
+  .site-header .main-nav .nav-drop[open]>.dropdown{
+    position:static!important;
+    width:100%!important;
+    max-height:none;
+    margin:8px 0!important;
+    box-shadow:none;
+  }
+}
+
+/* Accessibility and radius consistency follow-up.
+   Keep the terracotta brand accent, but use high-contrast text on dark surfaces. */
+.site-footer a:hover,
+.newsletter button,
+.footer-status{
+  color:#ffffff!important;
+}
+[data-theme=dark] a:hover,
+[data-theme=dark] .brand small,
+[data-theme=dark] .product-tag,
+[data-theme=dark] .article-meta,
+[data-theme=dark] .breadcrumb a,
+[data-theme=dark] .main-nav>a::before,
+[data-theme=dark] .nav-drop>summary::before,
+[data-theme=dark] .pill.active,
+[data-theme=dark] .pill:hover,
+[data-theme=dark] .pagination button.active{
+  color:#ffffff!important;
+}
+
+/* Rectangular controls and content panels share the same 8px radius.
+   Circular controls, capsule tags, and the arched hero image stay intentional. */
+.btn,
+.field input,
+.field select,
+.field textarea,
+.search-input,
+.sort-select,
+.thumbnail,
+.main-nav .dropdown a{
+  border-radius:var(--radius)!important;
+}
+
+
+/* Responsive header and menu utilities: CTA remains available at requested widths. */
+.site-header{overflow:visible}
+.mobile-nav-tools{display:flex;align-items:center;gap:10px;padding-top:14px;margin-top:8px;border-top:1px solid var(--border)}
+.mobile-nav-tools .icon-button{width:44px;min-width:44px;height:44px;flex:0 0 44px;border:1px solid var(--primary);border-radius:var(--radius);color:var(--text);background:transparent}
+.mobile-nav-tools .icon-button:hover,.mobile-nav-tools .icon-button:focus-visible,.mobile-nav-tools .icon-button[aria-pressed=true]{color:#ffffff;background:var(--primary)}
+
+/* Use the collapsible menu consistently through the tablet breakpoint (up to 1199px). */
+@media(max-width:1199px){
+  .site-header .nav-wrap{position:relative;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;min-height:78px}
+  .site-header .menu-button{display:grid}
+  .site-header .main-nav{display:none;position:absolute;top:100%;inset-inline:0;z-index:100;flex:none;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:5px;max-height:70vh;overflow:auto;padding:20px 30px;background:var(--bg);border-bottom:1px solid var(--border);font-size:14px}
+  .site-header .main-nav.open{display:flex}
+  .site-header .main-nav>a,.site-header .main-nav .nav-drop>summary{display:block;padding:12px 0;white-space:normal}
+  .site-header .main-nav .nav-drop{position:relative;z-index:1}
+  .site-header .main-nav .nav-drop[open]{z-index:100}
+  .site-header .main-nav .nav-drop[open]>.dropdown{position:static!important;inset:auto!important;width:100%!important;max-height:none;margin:8px 0!important;box-shadow:none}
+  .site-header .mobile-nav-tools{display:flex;justify-content:flex-end;direction:ltr;width:100%;margin-inline-start:auto}
+  .site-header .nav-actions{flex:0 0 auto;display:flex;align-items:center;gap:8px;margin:0}
+  .site-header .nav-actions>.menu-button{display:grid}
+}
+
+/* Tablet: keep Enquire Now directly in the header beside the menu button. */
+@media(min-width:601px) and (max-width:1199px){
+  .site-header .nav-actions>.btn{display:inline-flex;flex:0 0 auto;order:initial;margin:0;min-height:42px;padding:10px 14px}
+}
+
+/* Narrow phones: keep a compact Enquire Now CTA beside the menu button. */
+@media(max-width:600px){
+  .site-header .nav-wrap{padding-inline:14px;gap:8px}
+  .site-header .nav-actions{gap:4px}
+  .site-header .nav-actions>.btn{display:inline-flex;flex:0 0 auto;min-height:38px;padding:7px 8px;font-size:10px;gap:4px;letter-spacing:.2px}
+  .site-header .main-nav{padding-inline:18px}
+  .site-header .mobile-nav-tools{gap:10px}
+}
+
+/* Desktop header: keep display preferences inline with the navigation. */
+@media(min-width:1200px){
+  .site-header .mobile-nav-tools{display:flex;align-items:center;gap:0;margin:0;padding:0;border:0}
+  .site-header .mobile-nav-tools .icon-button{flex:0 0 44px;width:44px;min-width:44px;height:44px;border:0;border-radius:0;color:var(--text);background:transparent}
+  [data-theme=dark] .site-header .mobile-nav-tools .icon-button{color:#ffffff}
+  .site-header .mobile-nav-tools .icon-button:hover,.site-header .mobile-nav-tools .icon-button:focus-visible,.site-header .mobile-nav-tools .icon-button[aria-pressed=true]{background:transparent;color:var(--primary)}
+}
+
+
+/* Balanced mobile header spacing: preserve the CTA and give the menu room. */
+@media(max-width:600px){
+  .site-header .nav-wrap{
+    padding-inline:clamp(16px,5vw,22px);
+    gap:10px;
+    justify-content:space-between;
+  }
+  .site-header .brand{
+    flex:0 1 auto;
+    min-width:0;
+    gap:clamp(6px,1.8vw,8px);
+  }
+  .site-header .brand svg{
+    width:clamp(30px,7.5vw,36px);
+    height:clamp(30px,7.5vw,36px);
+    flex:0 0 auto;
+  }
+  .site-header .brand-name{
+    min-width:0;
+    font-size:clamp(18px,5.25vw,23px);
+    white-space:nowrap;
+  }
+  .site-header .brand small{
+    font-size:clamp(5.5px,1.55vw,7px);
+    letter-spacing:clamp(.7px,.25vw,1.1px);
+    white-space:nowrap;
+  }
+  .site-header .nav-actions{
+    flex:0 0 auto;
+    gap:clamp(10px,2.8vw,12px);
+  }
+  .site-header .nav-actions>.btn{
+    display:inline-flex;
+    flex:0 0 auto;
+    min-height:44px;
+    padding:10px clamp(11px,3.2vw,14px);
+    font-size:clamp(10px,2.7vw,12px);
+    gap:6px;
+    white-space:nowrap;
+  }
+  .site-header .nav-actions .menu-button{
+    width:40px;
+    min-width:40px;
+    height:44px;
+    flex:0 0 40px;
+  }
+}
+
+/* Extra-compact phones retain clear breathing room without hiding Enquire Now. */
+@media(max-width:380px){
+  .site-header .nav-wrap{padding-inline:12px;gap:8px}
+  .site-header .brand{gap:6px}
+  .site-header .brand svg{width:30px;height:30px;flex-basis:30px}
+  .site-header .brand-name{font-size:18px}
+  .site-header .brand small{font-size:6px;letter-spacing:.7px}
+  .site-header .nav-actions{gap:8px}
+  .site-header .nav-actions>.btn{min-height:40px;padding:8px 10px;font-size:10px;gap:4px}
+  .site-header .nav-actions .menu-button{width:38px;min-width:38px;height:40px;flex-basis:38px}
+}
+
+/* Desktop only: pin Theme and RTL controls to the far-right header corner. */
+@media(min-width:1200px){
+  .site-header .nav-wrap{position:relative;padding-right:30px}
+  .site-header .main-nav{position:static}
+  .site-header .nav-actions{margin-right:104px}
+  .site-header .mobile-nav-tools{
+    position:absolute;
+    top:50%;
+    right:30px;
+    transform:translateY(-50%);
+    z-index:2;
+    margin:0;
+    padding:0;
+    border:0;
+  }
 }
